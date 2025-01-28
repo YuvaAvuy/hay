@@ -1,7 +1,8 @@
-streamlit
-PyPDF2
-SpeechRecognition
-transformers
-spacy
-google-generativeai
-spacy[transformers]
+streamlit==1.16.0
+PyPDF2==2.11.2
+SpeechRecognition==3.8.1
+transformers==4.30.0
+spacy==3.7.5
+spacy[transformers]==3.7.5
+google-generativeai==0.0.10
+torch==2.5.1  # Since transformers and spaCy may require this
