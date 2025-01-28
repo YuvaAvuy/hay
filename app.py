@@ -3,16 +3,18 @@ import PyPDF2
 import speech_recognition as sr
 import spacy
 import os
+import subprocess
 from transformers import pipeline
 import google.generativeai as genai
-import subprocess
 
 # Function to download the model if not already downloaded
 def download_spacy_model():
     model_path = "en_core_web_trf"
-    if not os.path.exists(model_path):
+    # Check if the model already exists
+    if not os.path.exists(f"{model_path}"):
         # Download the model
         subprocess.run(["python", "-m", "spacy", "download", model_path])
+    # Load the model after downloading
     return spacy.load(model_path)
 
 # Set up the Gemini API key
