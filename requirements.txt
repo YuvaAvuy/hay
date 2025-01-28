@@ -4,3 +4,4 @@ SpeechRecognition
 transformers
 spacy
 google-generativeai
+spacy[transformers]
