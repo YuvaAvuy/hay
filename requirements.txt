@@ -1,0 +1,6 @@
+streamlit
+PyPDF2
+SpeechRecognition
+transformers
+spacy
+google-generativeai
