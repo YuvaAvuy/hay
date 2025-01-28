@@ -2,14 +2,24 @@ import streamlit as st
 import PyPDF2
 import speech_recognition as sr
 import spacy
+import os
 from transformers import pipeline
 import google.generativeai as genai
+import subprocess
+
+# Function to download the model if not already downloaded
+def download_spacy_model():
+    model_path = "en_core_web_trf"
+    if not os.path.exists(model_path):
+        # Download the model
+        subprocess.run(["python", "-m", "spacy", "download", model_path])
+    return spacy.load(model_path)
 
 # Set up the Gemini API key
 genai.configure(api_key="your-api-key-here")
 
 # Initialize spaCy model for NER
-nlp = spacy.load("en_core_web_trf")
+nlp = download_spacy_model()
 
 # Hugging Face Sentiment Analysis model
 sentiment_analysis = pipeline("sentiment-analysis", model="siebert/sentiment-roberta-large-english")
